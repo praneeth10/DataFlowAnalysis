@@ -1,0 +1,14 @@
+1. Add the file Dataflow.h to the directory include/llvm/Analysis
+2. Add the following lines to the file lib/Transforms/CMakeLists.txt
+    add_directory(Liveness)
+    add_directory(Reaching)
+    add_directory(Maypoint)
+3. Copy the three directories in this folder to lib/Transforms
+4. Run make in the directory lib/Transforms
+
+To run a pass use the following command
+ ./opt -load ../lib/LLVMMaypoint.dylib -Maypoint < <bc_file>
+ ./opt -load ../lib/LLVMLiveness.dylib -Liveness < <bc_file>
+ ./opt -load ../lib/LLVMReaching.dylib -Reaching < <bc_file>
+
+ Use .so instead of .dylib in linux systems
